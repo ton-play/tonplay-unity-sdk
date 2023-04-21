@@ -14,9 +14,7 @@ Moreover, this SDK includes two React wrappers:
 
 ## Installation
 
-```bash
-pip install tonplay-sdk
-```
+To install the SDK in your project, use TONPlaySDK.unitypackage
 
 ## Get API Key
 

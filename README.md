@@ -14,7 +14,7 @@ Moreover, this SDK includes two React wrappers:
 
 ## Installation
 
-To install the SDK in your project, use TONPlaySDK.unitypackage
+To install the SDK in your project, use [TONPlaySDK.unitypackage](https://github.com/ton-play/tonplay-unity-sdk/blob/main/TONPlaySDK.unitypackage)
 
 ## Get API Key
 

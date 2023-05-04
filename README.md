@@ -2,6 +2,22 @@
 
 TON Play allows developers to add blockchain elements to any mobile or web game. Additionally, you can port any web game to launch directly inside Telegram via a Web App.
 
+
+- [Use-cases](#use-cases)
+- [Installation](#installation)
+- [Quick start](#quick-start)
+  - [TON Play API Quick start](#ton-play-api-quick-start)
+  - [TPay API Quick start](#tpay-api-quick-start)
+  - [React Wrapper Quick Start](#react-wrapper-quick-start)
+    - [React Wrapper Simple Test](#react-wrapper-simple-test)
+    - [React Wrapper Test your build](#react-wrapper-test-your-build)
+    - [React Wrapper Custom build](#react-wrapper-custom-build)
+    - [React Wrapper Debug Console](#react-wrapper-debug-console)
+- [Main feature](#main-feature)
+  - [TON Play API](#ton-play-api)
+  - [TPayAPI](#tpayapi)
+  - [ReactWrapper](#reactwrapper)
+
 ## Use-cases
 
 This SDK allows you to get blockchain assets related to your game and to a specific user.

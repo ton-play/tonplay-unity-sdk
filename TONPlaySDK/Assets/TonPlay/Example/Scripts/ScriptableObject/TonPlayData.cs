@@ -8,7 +8,7 @@ namespace TONPlay.Example {
 
         [Header("TON Play API")]
         [Tooltip("Your game API Key https://docs.tonplay.io/digital-assets-api/api-key ")]
-        public string XAuthTonplay;
+        public string APIKey;
 
         [Tooltip("Your game Key https://docs.tonplay.io/digital-assets-api/api-key#gamekey ")]
         public string GameKey;

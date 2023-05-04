@@ -20,37 +20,23 @@ namespace TONPlay.Example {
         }
 
         /// <summary>
-        /// In this example, we create a merchant every time and display the QR to top up the tokens
-        /// In reality, you only need to do this once.
+        /// In this example, we display the QR to top up the tokens
         /// </summary>
         private void CreateMerchantAndPayIn() {
 
             if(!CheckAllRequiredData()) 
                 return;
-            
 
             TPayAPI tpayAPI = new TPayAPI();
+            tpayAPI.XAuthTPay = _TPayData.PaymentKey;
 
-            CreateMerchantBody createMerchantBody = new CreateMerchantBody() {
-                name = _TPayData.Name,
-                address = _TPayData.Address,
-                webhook = _TPayData.Webhook
+            PayInBody payInBody = new PayInBody() {
+                orderId = _TPayData.OrderId,
+                amount = _TPayData.Amount
             };
-
-            //1. Create Merchant  (In reality, you only need to do this once for game)
-            tpayAPI.CreateMerchant(createMerchantBody).Then(response => {
-                tpayAPI.XAuthTPay = response.paymentKey;
-                Debug.Log($"paymentKey {response.paymentKey}");
-
-                PayInBody payInBody = new PayInBody() {
-                    orderId = _TPayData.OrderId,
-                    amount = _TPayData.Amount
-                };
                 
-            //2. request Pay In link
-                return tpayAPI.PayIn(payInBody);
-
-            }).Then(response => {
+            //Request Pay In link
+            tpayAPI.PayIn(payInBody).Then(response => {
                 Debug.Log($"tonhub: {response.tonhub}");
                 _tonhubQRImgLoader.Load(response.tonhub);
                 Debug.Log($"tonkeeper: {response.tonkeeper}");
@@ -64,21 +50,6 @@ namespace TONPlay.Example {
 
         private bool CheckAllRequiredData() {
             bool isValid = true;
-
-            if (string.IsNullOrEmpty(_TPayData.Name)) {
-                Debug.LogError("Please enter your Name in TPayData");
-                isValid = false;
-            }
-
-            if (string.IsNullOrEmpty(_TPayData.Address)) {
-                Debug.LogError("Please enter your Address in TPayData");
-                isValid = false;
-            }
-
-            if (string.IsNullOrEmpty(_TPayData.Webhook)) {
-                Debug.LogError("Please enter your Webhook in TPayData");
-                isValid = false;
-            }
 
             if (string.IsNullOrEmpty(_TPayData.OrderId)) {
                 Debug.LogError("Please enter your OrderId in TPayData");

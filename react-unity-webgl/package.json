@@ -1,0 +1,49 @@
+{
+  "name": "react-unity-webgl",
+  "version": "3.0.0",
+  "description": "An out-of-the-box sandbox environment for the React Unity WebGL package. This environment contains a Create-React-App including both the source and build of a Unity WebGL project, allowing to test and debug all of its features.",
+  "private": true,
+  "dependencies": {
+    "@testing-library/jest-dom": "^5.16.4",
+    "@testing-library/react": "^13.3.0",
+    "@testing-library/user-event": "^13.5.0",
+    "@types/jest": "^27.5.2",
+    "@types/node": "^16.11.47",
+    "@types/react": "^18.0.15",
+    "@types/react-dom": "^18.0.6",
+    "eruda": "^2.11.3",
+    "react": "^18.2.0",
+    "react-bootstrap": "^2.7.4",
+    "react-dom": "^18.2.0",
+    "react-scripts": "5.0.1",
+    "react-unity-webgl": "^9.0.4",
+    "react-web-share": "^2.0.2",
+    "telegram-webapps-types-new": "^1.0.1",
+    "typescript": "^4.7.4",
+    "use-open-window": "^1.5.0"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}

@@ -18,7 +18,7 @@ namespace TONPlay.Example {
                 return;
 
             TonPlayAPI tonPlayAPI = new TonPlayAPI();
-            tonPlayAPI.XAuthTonplay = _tonPlayData.XAuthTonplay;
+            tonPlayAPI.XAuthTonplay = _tonPlayData.APIKey;
 
             tonPlayAPI.GetAssetsGame().Then(response => {
                 _pnlAssets.Show(response.content);
@@ -31,7 +31,7 @@ namespace TONPlay.Example {
         private bool CheckAllRequiredData() {
             bool isValid = true;
 
-            if (string.IsNullOrEmpty(_tonPlayData.XAuthTonplay)) {
+            if (string.IsNullOrEmpty(_tonPlayData.APIKey)) {
                 Debug.LogError("Please enter your game's API Key in TonPlayData");
                 isValid = false;
             }

@@ -23,10 +23,18 @@ namespace TONPlay.Example {
         public void Show(Token token) {
             gameObject.SetActive(true);
 
-            _txtRarity.text = token.rarity;
+            _txtRarity.text = token.properties.rarity;
             _txtTokenName.text = token.name;
             _txtTokenCollection.text = token.properties.collection.name;
-            _txtItemOnSale.text = $"{token.market.availableForBuy}/{token.supply}";
+
+            ulong availableForBuy = 0;
+            foreach (var seller in token.market.sellers) {
+
+                Debug.Log($"seller.quantity: {seller.quantity}");
+                availableForBuy += seller.quantity;
+            }
+
+            _txtItemOnSale.text = $"{availableForBuy}/{token.supply}";
 
             RestClient.Get(new RequestHelper {
                 Uri = token.image,

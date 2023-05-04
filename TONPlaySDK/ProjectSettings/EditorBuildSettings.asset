@@ -5,22 +5,22 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
-  - enabled: 0
-    path: Assets/TonPlay/Example/Scenes/1_TONPlayUser.unity
+  - enabled: 1
+    path: Assets/TonPlay/Example/Scenes/1_TONPlayAPI_User.unity
     guid: 9ca557d5d4ab0d14388653c1e89a8a58
   - enabled: 0
-    path: Assets/TonPlay/Example/Scenes/2_TONPlayAddUserWallet.unity
+    path: Assets/TonPlay/Example/Scenes/2_TONPlayAPI_AddUserWallet.unity
     guid: 75befe4cc00ecd54da18f2b8da5b6831
   - enabled: 0
-    path: Assets/TonPlay/Example/Scenes/3_TONPlayGameAssets.unity
+    path: Assets/TonPlay/Example/Scenes/3_TONPlayAPI_GameAssets.unity
     guid: d3ae2406597fdbf47b8f0e255138361b
   - enabled: 0
-    path: Assets/TonPlay/Example/Scenes/4_TONPlayAssetsOnMarketGetAndBuy.unity
+    path: Assets/TonPlay/Example/Scenes/4_TONPlayAPI_AssetsOnMarketGetAndBuy.unity
     guid: 0afe70e0dbe3d2c4f9b41a011c6cb85c
   - enabled: 0
-    path: Assets/TonPlay/Example/Scenes/5_TONPlayPayIn.unity
+    path: Assets/TonPlay/Example/Scenes/5_TPayAPI_PayIn.unity
     guid: 28bacd2acec15fd44b78a36986812a22
+  - enabled: 0
+    path: Assets/TonPlay/Example/Scenes/6_ReactWrapper.unity
+    guid: c631807e546bf4278b661ed6bf548787
   m_configObjects: {}

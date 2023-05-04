@@ -1,6 +1,5 @@
 using Proyecto26;
 
-
 namespace TONPlay {
     public class ServerConnectionErrorSignal {}
     public partial class BaseAPI {

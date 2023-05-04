@@ -9,15 +9,12 @@ namespace TONPlay.Example {
         [SerializeField]
         private List<PnlTokenOnSale> _pnlTokens;
 
-        public void Show(Seller[] tokensOnSale, Dictionary<string, Token> gameTokens, Action<string> buyAction) {
+        public void Show(Seller[] tokensOnSale, Action<string> buyAction) {
             for (int i = 0; i < tokensOnSale.Length; i++) {
                 if (i == _pnlTokens.Count)
                     break;
 
-                if (!gameTokens.ContainsKey(tokensOnSale[i].address))
-                    continue;
-
-                _pnlTokens[i].Show(gameTokens[tokensOnSale[i].address], tokensOnSale[i], buyAction);
+                _pnlTokens[i].Show(tokensOnSale[i], buyAction);
 
             }
         }

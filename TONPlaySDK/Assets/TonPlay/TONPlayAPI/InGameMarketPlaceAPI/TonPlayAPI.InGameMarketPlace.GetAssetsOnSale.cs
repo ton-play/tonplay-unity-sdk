@@ -5,13 +5,13 @@ using System.Text;
 
 namespace TONPlay {
     public partial class TonPlayAPI {
-        private string pathGetAssetsOnSale = "/x/market/v1/game/";
+        private string pathGetAssetsOnSale = "/x/market/v1/sale";
 
-        public IPromise<Seller[]> GetAssetsOnSale(string gameKey) {
+        public IPromise<Seller[]> GetAssetsOnSale() {
             RequestHelper requestOptions = null;
 
             requestOptions = new RequestHelper {
-                Uri = SERVER + pathGetAssetsOnSale + gameKey,
+                Uri = SERVER + pathGetAssetsOnSale,
                 Headers = new Dictionary<string, string> {
                     { X_AUTH_TON_PLAY_KEY, XAuthTonplay }
                 }

@@ -1,0 +1,28 @@
+body * {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+@media (orientation: landscape) {
+  body {
+    background-color: #131314;
+    opacity: 1;
+    /* if you need only portrait orientation */
+    /*
+    background: #131314 url(./../public/images/rotate.png) 0 0 no-repeat;
+    background-size: 35% auto;
+    background-position: center top;
+    opacity: 0;*/
+  }
+}
+
+@media (orientation: portrait) {
+  body {
+    background-color: #131314;
+    opacity: 1;
+    /* if you need only portrait landscape */
+    /* background: #131314 url(./../public/images/rotate.png) 0 0 no-repeat;
+    background-size: 80% auto;
+    background-position: center top;
+    opacity: 0; */
+  }
+}

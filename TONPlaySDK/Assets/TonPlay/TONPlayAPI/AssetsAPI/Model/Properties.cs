@@ -8,5 +8,6 @@ namespace TONPlay {
         public Profile ownerProfile;
         public TokenCollection collection;
         public string attributes;
+        public string rarity;
     }
 }

@@ -15,37 +15,30 @@ namespace TONPlay.Example {
         [SerializeField]
         private QRImgLoader _qrImgLoader;
 
-
-        Dictionary<string, Token> _gameTokens;
         Dictionary<string, Seller> _sellers;
+
+        private string _userJWTString;
 
         void Start() {
             GetAssetsOnMarket();
         }
 
         public void GetAssetsOnMarket() {
+            GetUserJWT();
             if (!CheckAllRequiredData())
                 return;
 
-            _gameTokens = new Dictionary<string, Token>();
             _sellers = new Dictionary<string, Seller>();
 
             TonPlayAPI tonPlayAPI = new TonPlayAPI();
-            tonPlayAPI.XAuthTonplay = _tonPlayData.XAuthTonplay;
+            tonPlayAPI.XAuthTonplay = _tonPlayData.APIKey;
 
-            tonPlayAPI.GetAssetsGame().Then(response => {
-
-                foreach(var token in response.content) {
-                    _gameTokens[token.address] = token;
-                }
-
-                return tonPlayAPI.GetAssetsOnSale(_tonPlayData.GameKey);
-            }).Then(response => {
+            tonPlayAPI.GetAssetsOnSale().Then(response => {
                 foreach(var seller in response) {
-                    _sellers[seller.address] = seller;
+                    _sellers[seller.seller.address] = seller;
                 }
 
-                _pnlAssetsOnSale.Show(response, _gameTokens, (assetAddress) => BuyAsset(assetAddress));
+                _pnlAssetsOnSale.Show(response, (assetAddress) => BuyAsset(assetAddress));
             }).Catch(err => {
                 var error = err as RequestException;
                 Debug.LogError("Error response:" + error.Message);
@@ -57,12 +50,11 @@ namespace TONPlay.Example {
                 return;
 
             TonPlayAPI tonPlayAPI = new TonPlayAPI();
-            tonPlayAPI.XAuthTonplay = _tonPlayData.XAuthTonplay;
+            tonPlayAPI.XAuthTonplay = _tonPlayData.APIKey;
 
-            string userJWTString = DecoderJWT.Decode(_tonPlayData.UserJWT);
-            Debug.Log($"user jwt: {userJWTString}");
+            Debug.Log($"user jwt: {_userJWTString}");
 
-            UserJWT userJWT = JsonUtility.FromJson<UserJWT>(userJWTString);
+            UserJWT userJWT = JsonUtility.FromJson<UserJWT>(_userJWTString);
 
             if(string.IsNullOrWhiteSpace(userJWT.wallet)) {
                 Debug.LogError("This user has not yet connected a wallet to TON Play. Please do it.");
@@ -91,11 +83,20 @@ namespace TONPlay.Example {
             GetAssetsOnMarket();
         }
 
+        private void GetUserJWT() {
+            string _queryToken = QueryParams.TOKEN;
+            //your address can be like https://yourgame.com?token=yourTokenFromTONPlayOrYourTelegramBot
+            string uri = Application.absoluteURL;
+            Dictionary<string, string> query = ParamParse.GetBrowserParameters(uri);
+
+            string token = query.ContainsKey(_queryToken) ? query[_queryToken] : _tonPlayData.UserJWT;
+            _userJWTString = DecoderJWT.Decode(token);
+        }
 
         private bool CheckAllRequiredData() {
             bool isValid = true;
 
-            if (string.IsNullOrEmpty(_tonPlayData.XAuthTonplay)) {
+            if (string.IsNullOrEmpty(_tonPlayData.APIKey)) {
                 Debug.LogError("Please enter your game's API Key in TonPlayData");
                 isValid = false;
             }

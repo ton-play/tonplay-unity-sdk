@@ -9,6 +9,9 @@ namespace TONPlay {
             Dictionary<string, string> ret =
                 new Dictionary<string, string>();
 
+            if (string.IsNullOrEmpty(uriString))
+                return ret;
+
             // Use the .NET class Uri to parse the link and get the query portion for us
             System.Uri uri = new System.Uri(uriString);
             string linkParams = uri.Query;

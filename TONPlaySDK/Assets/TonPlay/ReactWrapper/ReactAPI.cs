@@ -6,21 +6,19 @@ namespace ReactWrapper.ReactAPI {
         //https://docs.unity3d.com/Manual/webgl-interactingwithbrowserscripting.html
         [DllImport("__Internal")]
         static extern void WindowsOpenUrl(string url, string name);
-
         [DllImport("__Internal")]
-        static extern void ShowButton(string url, string title, bool fromTelegram);
-
+        static extern void WindowHref(string url);
         [DllImport("__Internal")]
-        static extern void HideButton();
+        static extern void Share(string url, string title, string text);
 
         /// <summary>
         /// Open url
         ///
-        /// reactWindowsOpenMethods you can take  from ReactWindowsOpenMethods class
+        /// reactWindowsOpenMethods you can take from ReactWindowsOpenMethods class
         /// </summary>
         /// <param name="url"></param>
         /// <param name="reactWindowsOpenMethods"></param>
-        public static void OpenUrl(string url, string reactWindowsOpenMethods) {
+        public static void OpenUrl(string url, string reactWindowsOpenMethods = ReactWindowsOpenMethods.BLANK) {
 #if !UNITY_EDITOR && UNITY_WEBGL
             WindowsOpenUrl(url: url, name: reactWindowsOpenMethods);
 #else
@@ -28,12 +26,20 @@ namespace ReactWrapper.ReactAPI {
 #endif
         }
 
-        public static void ShowBtn(string url, string title = "Pay", bool fromTelegram = false) {
-            ShowButton(url: url, title: title, fromTelegram: fromTelegram);
+        public static void WindowHrefOpen(string url) {
+#if !UNITY_EDITOR && UNITY_WEBGL
+            WindowHref(url: url);
+#else
+            Application.OpenURL(url);
+#endif
         }
 
-        public static void HideBtn() {
-            HideButton();
+        public static void ShareData(string url, string title, string text) {
+#if !UNITY_EDITOR && UNITY_WEBGL
+            Share(url: url, title: title, text: text);
+#else
+            Debug.Log($"You try share url: {url}\ntitle: {title}\ntext: {text}");
+#endif
         }
     }
 }

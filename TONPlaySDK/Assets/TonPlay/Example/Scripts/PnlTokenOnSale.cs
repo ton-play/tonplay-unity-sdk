@@ -1,11 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using TONPlay;
 using UnityEngine.Networking;
 using Proyecto26;
-using RSG;
 using System;
 
 namespace TONPlay.Example {
@@ -23,18 +19,17 @@ namespace TONPlay.Example {
         [SerializeField]
         private BtnBuyAsset _btnBuyAsset;
 
-        public void Show(Token token, Seller seller, Action<string> buyAction) {
+        public void Show(Seller seller, Action<string> buyAction) {
             gameObject.SetActive(true);
 
-            _txtRarity.text = token.rarity;
-            _txtTokenName.text = token.name;
-            _txtTokenCollection.text = token.properties.collection.name;
+            _txtTokenName.text = seller.address ?? "";
+            _txtTokenCollection.text = seller.name ?? "";
             _txtPrice.text = $"{seller.price.ToString("F")} TON";
 
             _btnBuyAsset.SetBuyAction(() => buyAction?.Invoke(seller.address));
 
             RestClient.Get(new RequestHelper {
-                Uri = token.image,
+                Uri = seller.image,
                 DownloadHandler = new DownloadHandlerTexture(true)
             }).Then(res => {
                 Texture2D tex = (Texture2D)((DownloadHandlerTexture)res.Request.downloadHandler).texture;

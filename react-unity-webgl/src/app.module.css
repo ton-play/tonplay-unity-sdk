@@ -1,0 +1,85 @@
+@import url("https://fonts.googleapis.com/css?family=Mulish");
+.container {
+}
+
+.container .unityWrapper {
+  background: #131314;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container .unityWrapper .loaderContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  background: radial-gradient(
+    50% 50% at 50% 50%,
+    #2c4975 0%,
+    rgba(29, 49, 79, 0) 100%
+  );
+  /* url("./../public/images/additionalBGFrame.png") no-repeat bottom center; */
+}
+
+.container .unityWrapper .loaderContainer .loaderWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 0 90px;
+}
+
+.text {
+  color: #ffffff;
+  font-family: "Mulish";
+  font-size: 32px;
+  clip-path: inset(0 1ch 0 0);
+  animation: textLoading 1s steps(4) infinite;
+  margin-bottom: 16px;
+}
+
+@keyframes textLoading {
+  to {
+    clip-path: inset(0 -1ch 0 0);
+  }
+}
+
+.container .unityWrapper .loaderContainer .loadingBar {
+  position: relative;
+  width: 300px;
+  border: 1px solid rgba(72, 124, 171, 0.58);
+  border-radius: 9px;
+  padding: 2px;
+}
+
+.container .unityWrapper .loaderContainer .loadingBar .loadingbarfillBg {
+  background: linear-gradient(0deg, #858dd615, #858dd615);
+  /* background: linear-gradient(0deg, #858DD6, #858DD6); */
+  width: 100%;
+  height: 15px;
+  opacity: 1;
+  border-radius: 20px;
+}
+
+.loadingbarimg {
+  height: 15px;
+  display: block;
+  position: absolute;
+  top: 2px;
+  object-fit: cover;
+  left: 2px;
+  border-radius: 25px;
+  opacity: 0.9;
+}
+
+.container .unityWrapper canvas {
+  width: 100%;
+  height: 100%;
+}

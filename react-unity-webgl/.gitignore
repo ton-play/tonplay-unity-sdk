@@ -1,0 +1,5 @@
+# vendors
+/node_modules
+
+# production
+/build

@@ -2,6 +2,11 @@
 
 TON Play allows developers to add blockchain elements to any mobile or web game. Additionally, you can port any web game to launch directly inside Telegram via a Web App.
 
+See also:  
+- [TON Play React Wrapper](https://github.com/ton-play/tonplay-unity-react-wrapper) — allows you to optimize the way the game launches in an iFrame or WebApp/WebView.  
+- [TON Play Telegram Bot](https://github.com/ton-play/tonplay-telegram-bot) — this is a simple example of a Telegram bot to run your game.
+
+Table of contents
 - [Use-cases](#use-cases)
 - [Installation](#installation)
 - [Quick start](#quick-start)
